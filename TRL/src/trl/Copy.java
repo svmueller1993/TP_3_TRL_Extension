@@ -7,7 +7,7 @@ public class Copy {
 	double price;
 	boolean rented;
 
-	public Copy(String id, String condition, boolean rented) {
+	public Copy(String id, String condition, boolean rented, Textbook textbook) {//Copy is a copy of a Textbook so they need to be coupled 
 		super();
 		this.id = id;
 		this.condition = condition;

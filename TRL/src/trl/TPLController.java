@@ -5,6 +5,7 @@ import java.util.List;
 
 public class TPLController {
 	List<Worker> workers = new ArrayList<Worker>();
+	List<Patron> patrons = new ArrayList<Patron>();
 	
 	public TPLController() {
 		loadSampleData();
@@ -13,6 +14,7 @@ public class TPLController {
 	public void loadSampleData() {
 		workers.add(new Worker("worker", "Alex", "Kevin", "worker"));
 		workers.add(new Manager("manager", "Alex", "Kevin", "manager"));
+		patrons.add(new Patron("1234abs", "Ali", "Anderson"));
 		
 	}
 	
@@ -25,5 +27,9 @@ public class TPLController {
 		}
 		return null;
 	}
+	
+	
+	
+	
 
 }

@@ -16,6 +16,7 @@ public class TRLApp {
 	private Scanner scanner = new Scanner(System.in);
 	private TPLController controller = new TPLController();
 	private Worker worker;
+	private Patron patron;
 
 	public static void main(String[] args) {
 		TRLApp app = new TRLApp();
@@ -39,7 +40,7 @@ public class TRLApp {
 					break;
 				}
 			} else {
-				int i = displayMenu(new String[] { "Logout", "Help" });
+				int i = displayMenu(new String[] { "Logout", "Help", "Check In a Textbook", "Check Out a Textbook" });
 				switch (i) {
 				case 1:
 					logout();
@@ -47,6 +48,11 @@ public class TRLApp {
 				case 2:
 					displayHelp();
 					break;
+				case 3:
+					startCheckInSession();
+					break;
+				case 4:
+					startCheckOutSession();
 				}
 			}
 		}
@@ -109,5 +115,17 @@ public class TRLApp {
 		}
 		return selection;
 	}
+	
+	public void startCheckInSession()
+	{
+		CheckInSession checkIn = new CheckInSession();
+	}
+
+	public void startCheckOutSession()
+	{
+		CheckOutSession checkOut = new CheckOutSession(null); //null is temporary
+		
+	}
+	
 	
 }
