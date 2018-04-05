@@ -16,6 +16,7 @@ public class CheckOutSession {
 		currentPatron = patron;
 		patronId = currentPatron.getPatronId();
 		
+		
 	}
 	
 	
