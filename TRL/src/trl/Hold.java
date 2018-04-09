@@ -2,11 +2,11 @@ package trl;
 
 public class Hold {
 
-	String id;
-	String type;
-	String decription;
-	double fine;
-	boolean resolved;
+	private String id;
+	private String type;
+	private String decription;
+	private double fine;
+	private boolean resolved;
 
 	public Hold(String id, String type, String decription, double fine) {
 		super();

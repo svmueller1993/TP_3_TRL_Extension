@@ -1,8 +1,8 @@
 package trl;
 
 public class Worker {
-	String workerId;
-	String firstName;
+	private String workerId;
+	private String firstName;
 	String lastName;
 	String password;
 

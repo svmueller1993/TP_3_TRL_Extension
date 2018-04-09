@@ -71,8 +71,8 @@ public class PatronCopies {
 
 	@Override
 	public String toString() {
-		return "PatronCopies [id=" + id + ", patronId=" + patronId + ", copyId=" + copyId + ", dueDate=" + dueDate
-				+ ", checkOutDate=" + checkOutDate + ", checkInDate=" + checkInDate + "]";
+		return "PatronCopies [id= " + id + ", patronId= " + patronId + ", copyId= " + copyId + ", dueDate= " + dueDate
+				+ ", checkOutDate= " + checkOutDate + ", checkInDate= " + checkInDate + "]";
 	}
 
 }

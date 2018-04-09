@@ -57,6 +57,8 @@ public class TPLController {
 		try {
 			patronCopies.add(new PatronCopies("1", "1", "1", sdf.parse("02/10/2018"), sdf.parse("01/10/2018"), null));
 			validateCopy("1").setRented(true);
+			patronCopies.add(new PatronCopies("2", "2", "2", sdf.parse("02/10/2018"), sdf.parse("01/10/2018"), null));
+			validateCopy("1").setRented(true);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -165,6 +167,26 @@ public class TPLController {
 		for (Copy copy : checkOutCopies) {
 			copy.setRented(true);
 			patronCopies.add(new PatronCopies(prefix + i, patron.patronId, copy.getId(), cal.getTime(), checkOutDate, null));
+		}
+	}
+	
+	/**
+	 * Checks in given copies for given patron.
+	 * @param patron checking in Patron object
+	 * @param checkInCopies List of textbook copy objects
+	 */
+	public void checkInCopies(Patron patron, List<Copy> checkInCopies) {
+		Date checkInDate = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, 3);
+		for(int i = 0; i< patronCopies.size(); i ++)
+		{
+			patronCopies.get(i).setCheckInDate(checkInDate);
+		}
+		for (Copy copy : checkInCopies) {
+			copy.setRented(false);
+			patronCopies.remove(copy);
+			//Need to add to copy audit trail
 		}
 	}
 

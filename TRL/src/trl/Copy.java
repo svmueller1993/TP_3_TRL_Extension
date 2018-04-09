@@ -1,12 +1,14 @@
 package trl;
 
+import java.util.Date;
+
 public class Copy {
 
-	String id;
-	String condition;
-	double price;
-	boolean rented;
-	String textbookId;
+	private String id;
+	private String condition;
+	private double price;
+	private boolean rented;
+	private String textbookId;
 
 	public Copy(String id, String condition, double price, boolean rented, String textbookId) {
 		super();
@@ -17,6 +19,7 @@ public class Copy {
 		this.textbookId = textbookId;
 	}
 
+	
 	public String getId() {
 		return id;
 	}
@@ -59,8 +62,8 @@ public class Copy {
 
 	@Override
 	public String toString() {
-		return "Copy [id=" + id + ", condition=" + condition + ", price=" + price + ", rented=" + rented
-				+ ", textbookId=" + textbookId + "]";
+		return "Copy [id= " + id + ", condition= " + condition + ", price= " + price + ", rented= " + rented
+				+ ", textbookId= " + textbookId + "]";
 	}
 
 }

@@ -90,9 +90,9 @@ public class Patron {
 
 	@Override
 	public String toString() {
-		return "Patron [patronId=" + patronId + ", firstName=" + firstName + ", lastName=" + lastName + ", phone="
-				+ phone + ", active=" + active + ", accountType=" + accountType + ", address=" + address
-				+ ", overdueHold=" + overdueHold + "]";
+		return "Patron [patronId= " + patronId + ", firstName= " + firstName + ", lastName= " + lastName + ", phone= "
+				+ phone + ", active= " + active + ", accountType= " + accountType + ", address= " + address
+				+ ", overdueHold= " + overdueHold + "]";
 	}
 
 }

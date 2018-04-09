@@ -26,7 +26,7 @@ public class CheckOutSession {
 	 */
 	public void start() {
 		do {
-			System.out.println("Please, enter check out copy Id:");
+			System.out.println("Please enter the copy Id of the copy being checked out:");
 			String copyId = scanner.nextLine();
 			Copy copy = controller.validateCopy(copyId);
 			if ( copy == null) {
@@ -39,7 +39,7 @@ public class CheckOutSession {
 						break;
 					}
 					if (c.getTextbookId().equals(copy.getTextbookId())) {
-						System.out.println("In this transaction, only one copy allowed for each textbook.");
+						System.out.println("In this transaction, only one copy of a textbook is allowed.");
 						copy = null;
 						break;
 					}
@@ -56,7 +56,7 @@ public class CheckOutSession {
 					copies.add(copy);
 				}
 			}
-			System.out.println("Do you want enter another copy Id?(y/n)");
+			System.out.println("Do you want to enter another copy Id?(y/n)");
 		} while ("Y".equalsIgnoreCase(scanner.nextLine()));
 	}
 
@@ -70,7 +70,7 @@ public class CheckOutSession {
 				Textbook textbook = controller.getTextbook(copy.getTextbookId());
 				System.out.println(textbook);
 			}
-			System.out.println("Do you want check out above copies?(y/n)");
+			System.out.println("Do you want check out the above copies?(y/n)");
 			if("Y".equalsIgnoreCase(scanner.nextLine())){
 				controller.checkoutCopies(patron, copies);
 				System.out.println("Check out completed.");

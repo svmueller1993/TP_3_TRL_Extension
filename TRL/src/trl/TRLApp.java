@@ -140,7 +140,13 @@ public class TRLApp {
 	}
 
 	public void startCheckInSession() {
-		CheckInSession checkIn = new CheckInSession();
+		Patron patron = validatePatron();
+		CheckInSession checkIn = new CheckInSession(patron, controller);
+		if (patron != null) {
+			System.out.println(patron);
+			checkIn.start();
+			checkIn.checkInCopies();
+		}
 	}
 
 	public void startCheckOutSession() {
@@ -152,7 +158,7 @@ public class TRLApp {
 				checkOut.start();
 				checkOut.checkOutCopies();
 			} else {
-				System.out.println("You can not check out copies. Please, return overdue copies.");
+				System.out.println("You can not check out these copies. Please, return overdue copies.");
 			}
 		}
 	}
