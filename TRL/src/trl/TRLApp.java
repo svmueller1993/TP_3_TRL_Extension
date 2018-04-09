@@ -139,7 +139,8 @@ public class TRLApp {
 		return selection;
 	}
 
-	public void startCheckInSession() {
+	public void startCheckInSession() 
+	{
 		Patron patron = validatePatron();
 		CheckInSession checkIn = new CheckInSession(patron, controller);
 		if (patron != null) {

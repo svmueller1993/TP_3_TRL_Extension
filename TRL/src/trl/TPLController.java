@@ -175,7 +175,8 @@ public class TPLController {
 	 * @param patron checking in Patron object
 	 * @param checkInCopies List of textbook copy objects
 	 */
-	public void checkInCopies(Patron patron, List<Copy> checkInCopies) {
+	public void checkInCopies(Patron patron, List<Copy> checkInCopies)
+	{
 		Date checkInDate = new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, 3);

@@ -60,7 +60,7 @@ public class CheckInSession {
 	}
 
 	/**
-	 * Displays check-in copy list and completes check-in textbook copies.
+	 * Displays check-in copy list and completes checking in textbook copies.
 	 */
 	public void checkInCopies() {
 		if (!copies.isEmpty()) {
