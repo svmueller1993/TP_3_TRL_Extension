@@ -69,4 +69,10 @@ public class PatronCopies {
 		this.checkInDate = checkInDate;
 	}
 
+	@Override
+	public String toString() {
+		return "PatronCopies [id=" + id + ", patronId=" + patronId + ", copyId=" + copyId + ", dueDate=" + dueDate
+				+ ", checkOutDate=" + checkOutDate + ", checkInDate=" + checkInDate + "]";
+	}
+
 }

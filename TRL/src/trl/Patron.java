@@ -1,5 +1,10 @@
 package trl;
 
+/**
+ * This class holds Patron information such as first name, last name, phone,
+ * address etc.
+ *
+ */
 public class Patron {
 
 	String patronId;
@@ -11,11 +16,12 @@ public class Patron {
 	String address;
 	boolean overdueHold;
 
-	public Patron(String patronId, String firstName, String lastName) {
+	public Patron(String patronId, String firstName, String lastName, boolean active) {
 		super();
 		this.patronId = patronId;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.active = active;
 	}
 
 	public String getPatronId() {
@@ -80,6 +86,13 @@ public class Patron {
 
 	public void setOverdueHold(boolean overdueHold) {
 		this.overdueHold = overdueHold;
+	}
+
+	@Override
+	public String toString() {
+		return "Patron [patronId=" + patronId + ", firstName=" + firstName + ", lastName=" + lastName + ", phone="
+				+ phone + ", active=" + active + ", accountType=" + accountType + ", address=" + address
+				+ ", overdueHold=" + overdueHold + "]";
 	}
 
 }

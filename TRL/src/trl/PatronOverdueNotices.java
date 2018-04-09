@@ -1,5 +1,7 @@
 package trl;
-
+/**
+ * This class holds patron's overdue notice information 
+ */
 public class PatronOverdueNotices {
 
 	String id;

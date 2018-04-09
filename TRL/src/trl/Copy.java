@@ -6,12 +6,15 @@ public class Copy {
 	String condition;
 	double price;
 	boolean rented;
+	String textbookId;
 
-	public Copy(String id, String condition, boolean rented, Textbook textbook) {//Copy is a copy of a Textbook so they need to be coupled 
+	public Copy(String id, String condition, double price, boolean rented, String textbookId) {
 		super();
 		this.id = id;
 		this.condition = condition;
+		this.price = price;
 		this.rented = rented;
+		this.textbookId = textbookId;
 	}
 
 	public String getId() {
@@ -44,6 +47,20 @@ public class Copy {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getTextbookId() {
+		return textbookId;
+	}
+
+	public void setTextbookId(String textbookId) {
+		this.textbookId = textbookId;
+	}
+
+	@Override
+	public String toString() {
+		return "Copy [id=" + id + ", condition=" + condition + ", price=" + price + ", rented=" + rented
+				+ ", textbookId=" + textbookId + "]";
 	}
 
 }

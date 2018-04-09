@@ -1,6 +1,7 @@
 package trl;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class TRLApp {
@@ -16,14 +17,13 @@ public class TRLApp {
 	private Scanner scanner = new Scanner(System.in);
 	private TPLController controller = new TPLController();
 	private Worker worker;
-	private Patron patron;
 
 	public static void main(String[] args) {
 		TRLApp app = new TRLApp();
 		app.displayAppTitle();
 		app.launch();
 	}
-	
+
 	private void launch() {
 		while (true) {
 			if (worker == null) {
@@ -40,19 +40,41 @@ public class TRLApp {
 					break;
 				}
 			} else {
-				int i = displayMenu(new String[] { "Logout", "Help", "Check In a Textbook", "Check Out a Textbook" });
+				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details", "Logout", "Help" });
 				switch (i) {
 				case 1:
-					logout();
+					startCheckOutSession();
 					break;
 				case 2:
-					displayHelp();
-					break;
-				case 3:
 					startCheckInSession();
 					break;
+				case 3: 
+					showPatronDetails();
+					break;
 				case 4:
-					startCheckOutSession();
+					logout();
+					break;
+				case 5:
+					displayHelp();
+					break;
+				}
+			}
+		}
+	}
+
+	private void showPatronDetails() {
+		Patron patron = validatePatron();
+		if (patron != null) {
+			System.out.println("Patron Details:");
+			System.out.println(patron);
+			List<PatronCopies> pc = controller.getPatronCopies(patron.getPatronId());
+			if (!pc.isEmpty()) {
+				System.out.println("Patron Copies:");
+				for (PatronCopies patronCopy : pc) {
+					System.out.println(patronCopy);
+					Copy copy = controller.validateCopy(patronCopy.getCopyId());
+					System.out.println("\t" + copy);
+					System.out.println("\t\t" + controller.getTextbook(copy.getTextbookId()));
 				}
 			}
 		}
@@ -70,7 +92,7 @@ public class TRLApp {
 		String password = scanner.nextLine();
 		worker = controller.login(login, password);
 		if (worker != null) {
-			System.out.println("\nWelcome Textbook Rental Library.\n");
+			System.out.println("\nWelcome to Textbook Rental Library.\n");
 		} else {
 			System.out.println("Invalid login name or password.");
 		}
@@ -94,7 +116,7 @@ public class TRLApp {
 			if (displayErrorMsg) {
 				System.out.println("\nInvalid selection, please select option again.");
 			}
-			System.out.println("\tMENU OPTIONS");
+			System.out.println("\nMENU OPTIONS");
 			System.out.println("--------------------------------------------");
 			for (int j = 0; j < arr.length; j++) {
 				System.out.println("\t" + (j + 1) + ". " + arr[j]);
@@ -102,9 +124,10 @@ public class TRLApp {
 			System.out.println("--------------------------------------------");
 			System.out.print("Select option:");
 			try {
-			selection = scanner.nextInt();
-			scanner.nextLine();
-			} catch(InputMismatchException e) {
+				selection = scanner.nextInt();
+				scanner.nextLine();
+			} catch (InputMismatchException e) {
+				scanner.nextLine();
 				selection = 0;
 			}
 			if (0 < selection && selection <= arr.length) {
@@ -115,17 +138,33 @@ public class TRLApp {
 		}
 		return selection;
 	}
-	
-	public void startCheckInSession()
-	{
+
+	public void startCheckInSession() {
 		CheckInSession checkIn = new CheckInSession();
 	}
 
-	public void startCheckOutSession()
-	{
-		CheckOutSession checkOut = new CheckOutSession(null); //null is temporary
-		
+	public void startCheckOutSession() {
+		Patron patron = validatePatron();
+		if (patron != null) {
+			System.out.println(patron);
+			if (controller.canPatronCheckoutCopies(patron)) {
+				CheckOutSession checkOut = new CheckOutSession(patron, controller);
+				checkOut.start();
+				checkOut.checkOutCopies();
+			} else {
+				System.out.println("You can not check out copies. Please, return overdue copies.");
+			}
+		}
 	}
 	
-	
+	public Patron validatePatron() {
+		System.out.println("Enter Patron Id:");
+		String patronId = scanner.nextLine();
+		Patron p = controller.validatePatron(patronId);
+		if (p == null) {
+			System.out.println("Invalid Patron Id.");
+		}
+		return p;
+	}
+
 }
