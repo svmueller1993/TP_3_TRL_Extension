@@ -88,10 +88,10 @@ public class TRLApp {
 	}
 
 	private void showTextbookDetails() {
-		System.out.println("Enter Textbook ID:");
+		System.out.println("Enter Textbook ID or ISBN:");
 		String textbookId = scanner.nextLine();
 		if (textbookId == null || textbookId.isEmpty()) {
-			System.out.println("Textbook ID can not be empty.");
+			System.out.println("Textbook ID or ISBN can not be empty.");
 			return;
 		}
 		

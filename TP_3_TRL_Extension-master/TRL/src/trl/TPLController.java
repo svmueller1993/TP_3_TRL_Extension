@@ -188,6 +188,11 @@ public class TPLController {
 			if (t.getId().equals(textbookId)) {
 				return t;
 			}
+			
+			else if(t.getIsbn().equals(textbookId))
+			{
+				return t;
+			}
 		}
 		return null;
 	}
