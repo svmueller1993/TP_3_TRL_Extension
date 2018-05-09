@@ -59,7 +59,8 @@ public class TRLApp {
 					displayHelp();
 					break;
 				}
-			} else if (worker instanceof Manager || worker == worker) {
+				//Worker needs to be able to check in and out texts too
+			} else if (worker instanceof Manager || worker != null) {
 				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details",
 						"Logout", "Help" });
 				switch (i) {

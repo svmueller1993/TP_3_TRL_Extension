@@ -190,7 +190,7 @@ public class TPLController {
 		for (Copy copy : checkInCopies) {
 			copy.setRented(false);
 			patronCopies.remove(copy);
-			System.out.println("What is the condition of the copy being returned?");
+			System.out.println("What is the condition of the copy being returned?"); //insert condition to add to audit
 			String returnedCondition = sc.next();
 			copy.setAudit(patron.getPatronId(), returnedCondition, checkInDate.toString());
 		}

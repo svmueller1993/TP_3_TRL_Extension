@@ -68,7 +68,7 @@ public class Copy {
 		audit.add(information);
 	}
 	
-	public ArrayList<String> getAudit()
+	public ArrayList<String> getAudit() //checkout history of copy
 	{
 		for(int i = 0; i < audit.size(); i++)
 		{
