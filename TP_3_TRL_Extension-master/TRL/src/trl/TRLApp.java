@@ -231,12 +231,13 @@ public class TRLApp {
 	{
 		Patron patron = validatePatron();
 		CheckInSession checkIn = new CheckInSession(patron, controller);
+		checkIn.start();
 		if (patron != null) 
 		{
 			System.out.println(patron);
+			
 			if(controller.canPatronCheckInCopies(patron, checkIn.copies)) 
 			{
-				checkIn.start();
 				checkIn.checkInCopies();
 			}
 
