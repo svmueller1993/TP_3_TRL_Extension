@@ -1,7 +1,5 @@
 package trl;
 
-import java.util.Date;
-
 public class Copy {
 
 	private String id;

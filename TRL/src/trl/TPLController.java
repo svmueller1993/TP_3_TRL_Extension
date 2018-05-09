@@ -29,6 +29,7 @@ public class TPLController {
 	public void loadSampleData() {
 		workers.add(new Worker("worker", "Alex", "Kevin", "worker"));
 		workers.add(new Manager("manager", "Alex", "Kevin", "manager"));
+		workers.add(new TitleManager("tmanager", "Alex", "Kevin", "tmanager"));
 		// patrons
 		patrons.add(new Patron("1234abs", "Ali", "Anderson", true));
 		patrons.add(new Patron("1", "Joe", "Johnson", true));
@@ -189,6 +190,29 @@ public class TPLController {
 			patronCopies.remove(copy);
 			//Need to add to copy audit trail
 		}
+	}
+
+	public Textbook addTextbook(String isbn, String title, String author) throws Exception {
+		for(Textbook b: textbooks) {
+			if (b.getIsbn().equals(isbn)) {
+				throw new Exception("This textbook already exist.");
+			}
+		}
+		Textbook t = new Textbook("" + (textbooks.size() + 1), isbn, title, author);
+		textbooks.add(t);
+		return t;
+	}
+
+	public String[] addCopies(String textbookId, int n) {
+		String[] ids = new String[n];
+		int id = copies.size() + 1;
+		for(int i = 0; i < n; i++) {
+			ids[i] = "" + id;
+			Copy copy = new Copy(""+id, "NEW", 0.0f, false, textbookId);
+			copies.add(copy);
+			id++;
+		}
+		return ids;
 	}
 
 }

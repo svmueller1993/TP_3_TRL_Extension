@@ -1,5 +1,6 @@
 package trl;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -39,8 +40,28 @@ public class TRLApp {
 					displayHelp();
 					break;
 				}
-			} else {
-				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details", "Logout", "Help" });
+			} else if (worker instanceof TitleManager) {
+				int i = displayMenu(new String[] { "Add Textbook", "Add Copies", "Show Textbook Details", "Logout", "Help" });
+				switch (i) {
+				case 1:
+					addTextbook();
+					break;
+				case 2:
+					addCopy();
+					break;
+				case 3:
+					showTextbookDetails();
+					break;
+				case 4:
+					logout();
+					break;
+				case 5:
+					displayHelp();
+					break;
+				}
+			} else if (worker instanceof Manager) {
+				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details",
+						"Logout", "Help" });
 				switch (i) {
 				case 1:
 					startCheckOutSession();
@@ -48,7 +69,7 @@ public class TRLApp {
 				case 2:
 					startCheckInSession();
 					break;
-				case 3: 
+				case 3:
 					showPatronDetails();
 					break;
 				case 4:
@@ -58,8 +79,71 @@ public class TRLApp {
 					displayHelp();
 					break;
 				}
-			}
+			} 
 		}
+	}
+
+	private void showTextbookDetails() {
+		System.out.println("Enter Textbook ID:");
+		String textbookId = scanner.nextLine();
+		if (textbookId == null || textbookId.isEmpty()) {
+			System.out.println("Textbook ID can not be empty.");
+			return;
+		}
+		
+		Textbook textbook = controller.getTextbook(textbookId);
+		System.out.println("Textbook Details:" + textbook);
+	}
+
+	private void addCopy() {
+		System.out.println("Enter Textbook ID:");
+		String textbookId = scanner.nextLine();
+		if (textbookId == null || textbookId.isEmpty()) {
+			System.out.println("Textbook ID can not be empty.");
+			return;
+		}
+		System.out.println("Enter Number of Copies:");
+		int n = scanner.nextInt();
+		if (n < 1) {
+			System.out.println("Number of Copies can not less than 1.");
+			return;
+		}
+		
+		String[] copyIds = controller.addCopies(textbookId, n);
+		System.out.println("Following Textbook Copy Ids added:" + Arrays.toString(copyIds));
+	}
+
+	private void addTextbook() {
+		System.out.println("Enter Textbook Details:");
+		System.out.print("ISBN:");
+		String isbn = scanner.nextLine();
+		System.out.print("Title:");
+		String title = scanner.nextLine();
+		System.out.print("Author:");
+		String author = scanner.nextLine();
+		
+		if (isbn == null || isbn.isEmpty()) {
+			System.out.println("Textbook ISBN can not be empty.");
+			return;
+		}
+		
+		if (title == null || title.isEmpty()) {
+			System.out.println("Textbook Title can not be empty.");
+			return;
+		}
+		
+		if (author == null || author.isEmpty()) {
+			System.out.println("Textbook Author can not be empty.");
+			return;
+		}
+		
+		try {
+			Textbook textbook = controller.addTextbook(isbn, title, author);
+			System.out.println("Added following textbook:" + textbook.toString());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 
 	private void showPatronDetails() {
@@ -139,8 +223,7 @@ public class TRLApp {
 		return selection;
 	}
 
-	public void startCheckInSession() 
-	{
+	public void startCheckInSession() {
 		Patron patron = validatePatron();
 		CheckInSession checkIn = new CheckInSession(patron, controller);
 		if (patron != null) {
@@ -163,7 +246,7 @@ public class TRLApp {
 			}
 		}
 	}
-	
+
 	public Patron validatePatron() {
 		System.out.println("Enter Patron Id:");
 		String patronId = scanner.nextLine();
