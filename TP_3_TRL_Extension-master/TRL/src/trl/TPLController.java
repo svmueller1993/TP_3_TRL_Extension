@@ -218,5 +218,10 @@ public class TPLController {
 		}
 		return ids;
 	}
+	
+	public void resolveOverdueHold(Patron patron)
+	{
+		patron.setOverdueHold(false);
+	}
 
 }

@@ -62,7 +62,7 @@ public class TRLApp {
 				//Worker needs to be able to check in and out texts too
 			} else if (worker instanceof Manager || worker != null) {
 				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details",
-						"Logout", "Help" });
+						"Logout", "Resolve Hold", "Help" });
 				switch (i) {
 				case 1:
 					startCheckOutSession();
@@ -77,6 +77,9 @@ public class TRLApp {
 					logout();
 					break;
 				case 5:
+					resolveHold();
+					break;
+				case 6:
 					displayHelp();
 					break;
 				}
@@ -256,6 +259,15 @@ public class TRLApp {
 			System.out.println("Invalid Patron Id.");
 		}
 		return p;
+	}
+	
+	public void resolveHold()
+	{
+		Patron patron = validatePatron();
+		controller.resolveOverdueHold(patron);
+		System.out.println("The system has been updated, the hold has been removed.");
+		
+		
 	}
 
 }
