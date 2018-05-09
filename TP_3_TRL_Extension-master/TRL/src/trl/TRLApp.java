@@ -62,7 +62,7 @@ public class TRLApp {
 				//Worker needs to be able to check in and out texts too
 			} else if (worker instanceof Manager || worker != null) {
 				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details",
-						"Logout", "Resolve Hold", "Help" });
+						"Resolve Hold", "Logout", "Help" });
 				switch (i) {
 				case 1:
 					startCheckOutSession();
@@ -74,10 +74,10 @@ public class TRLApp {
 					showPatronDetails();
 					break;
 				case 4:
-					logout();
+					resolveHold();
 					break;
 				case 5:
-					resolveHold();
+					logout();
 					break;
 				case 6:
 					displayHelp();
