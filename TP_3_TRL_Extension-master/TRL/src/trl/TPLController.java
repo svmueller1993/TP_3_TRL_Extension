@@ -113,6 +113,30 @@ public class TPLController {
 		return true;
 	}
 
+	public boolean canPatronCheckInCopies(Patron patron, List<Copy> copies)
+	{
+		if (patronCopies.isEmpty())
+		{
+			System.out.println("Records show this patron does not have any copies checked out");
+			return false;	
+		}
+		
+		if(!patronCopies.isEmpty())
+		{
+			for (Copy c: copies)
+			{
+				if (patronCopies.contains(c) == false)
+				{
+					System.out.println("Our records show that this patron did not rent this copy");
+					return false;	
+				}
+			}
+		}
+		
+		return true;
+	}
+
+	
 	/**
 	 * Returns patrons all copies.
 	 * @param patronId Patron Id

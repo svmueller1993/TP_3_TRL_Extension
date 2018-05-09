@@ -16,7 +16,8 @@ public class CheckInSession {
 	TPLController controller;
 	private Scanner scanner = new Scanner(System.in);
 
-	public CheckInSession(Patron patron, TPLController controller) {
+	public CheckInSession(Patron patron, TPLController controller) 
+	{
 		this.patron = patron;
 		this.controller = controller;
 	}
@@ -25,13 +26,17 @@ public class CheckInSession {
 	 * Starts check in process. Requests enter copy id and validates textbook copy.
 	 */
 	public void start() {
+		
 		do {
 			System.out.println("Please enter the copy Id of the copy being checked in:");
 			String copyId = scanner.nextLine();
 			Copy copy = controller.validateCopy(copyId);
-			if ( copy == null) {
+			
+			if ( copy == null) 
+			{
 				System.out.println("Invalid copy Id.");
 			} 
+			
 			else 
 			{
 				for (Copy c : copies) {
@@ -56,6 +61,7 @@ public class CheckInSession {
 				}
 			}
 			System.out.println("Do you want to enter another copy Id?(y/n)");
+			
 		} while ("Y".equalsIgnoreCase(scanner.nextLine()));
 	}
 

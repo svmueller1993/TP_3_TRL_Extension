@@ -227,16 +227,26 @@ public class TRLApp {
 		return selection;
 	}
 
-	public void startCheckInSession() {
+	public void startCheckInSession() 
+	{
 		Patron patron = validatePatron();
 		CheckInSession checkIn = new CheckInSession(patron, controller);
-		if (patron != null) {
+		
+		if (patron != null) 
+		{
 			System.out.println(patron);
-			checkIn.start();
-			checkIn.checkInCopies();
+			if(controller.canPatronCheckInCopies(patron, checkIn.copies)) 
+			{
+				checkIn.start();
+				checkIn.checkInCopies();
+			}
+
 		}
 	}
+	
 
+	
+	
 	public void startCheckOutSession() {
 		Patron patron = validatePatron();
 		if (patron != null) {
