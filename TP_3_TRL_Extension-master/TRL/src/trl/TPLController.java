@@ -61,7 +61,7 @@ public class TPLController {
 			patronCopies.add(new PatronCopies("1", "1", "1", sdf.parse("09/10/2018"), sdf.parse("01/10/2018"), null));
 			validateCopy("1").setRented(true);
 			patronCopies.add(new PatronCopies("2", "2", "2", sdf.parse("02/10/2018"), sdf.parse("01/10/2018"), null));
-			validateCopy("1").setRented(true);
+			validateCopy("2").setRented(true);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
