@@ -113,6 +113,12 @@ public class TPLController {
 		return true;
 	}
 
+	/**
+	 * 
+	 * @param patron
+	 * @param copies
+	 * @return boolean if this textbook as able to be checked in
+	 */
 	public boolean canPatronCheckInCopies(Patron patron, List<Copy> copies)
 	{
 		if (patronCopies.isEmpty())

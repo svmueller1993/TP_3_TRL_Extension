@@ -31,7 +31,6 @@ public class CheckInSession {
 			System.out.println("Please enter the copy Id of the copy being checked in:");
 			String copyId = scanner.nextLine();
 			Copy copy = controller.validateCopy(copyId);
-			
 			if ( copy == null) 
 			{
 				System.out.println("Invalid copy Id.");

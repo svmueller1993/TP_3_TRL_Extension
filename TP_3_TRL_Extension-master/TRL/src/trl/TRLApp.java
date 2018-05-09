@@ -231,7 +231,6 @@ public class TRLApp {
 	{
 		Patron patron = validatePatron();
 		CheckInSession checkIn = new CheckInSession(patron, controller);
-		
 		if (patron != null) 
 		{
 			System.out.println(patron);
