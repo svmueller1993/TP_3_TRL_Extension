@@ -13,72 +13,100 @@ class CopyTest {
 
 	@Test
 	void testCopy() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		assertNotNull(c);
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.getId();
+		assertTrue(c.getId() == "1");
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setId("2");
+		assertTrue(c.getId() == "2");
 	}
 
 	@Test
 	void testGetCondition() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.getCondition();
+		assertTrue(c.getCondition() == "Like New");
 	}
 
 	@Test
 	void testSetCondition() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setCondition("Good");
+		c.getCondition();
+		assertTrue(c.getCondition() == "Good");
 	}
 
 	@Test
 	void testIsRented() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.isRented();
+		assertTrue(c.isRented() == false);
 	}
 
 	@Test
 	void testSetRented() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setRented(true);
+		assertTrue(c.isRented() == true);
 	}
 
 	@Test
 	void testGetPrice() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		assertTrue(c.getPrice() == 99.99);
+		
 	}
 
 	@Test
 	void testSetPrice() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setPrice(105.00);
+		assertTrue(c.getPrice() == 105.00);
 	}
 
 	@Test
 	void testGetTextbookId() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setId("1234");
+		assertTrue(c.getId() == "1234");
 	}
 
 	@Test
 	void testSetTextbookId() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setId("1234");
+		assertTrue(c.getId() == "1234");
 	}
 
 	@Test
 	void testSetAudit() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setAudit("Test", "Good", "5/9/2018");
+		assertEquals("[Test, Good, 5/9/2018]", c.getAudit().toString());
 	}
 
 	@Test
 	void testGetAudit() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		c.setAudit("Test", "Good", "5/9/2018");
+		assertEquals("[Test, Good, 5/9/2018]", c.getAudit().toString());
 	}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		Copy c = new Copy("1", "Like New", 99.99, false, "123");
+		
+		assertEquals("Copy [id= 1, condition= Like New, price= 99.99, rented= false, textbookId= 123]", c.toString());
 	}
 
 }

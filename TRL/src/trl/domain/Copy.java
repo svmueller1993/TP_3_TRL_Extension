@@ -64,7 +64,7 @@ public class Copy {
 	
 	public void setAudit(String patron, String returnedCondition, String dateReturned )
 	{
-		String information = patron + " " + returnedCondition + " " + dateReturned;
+		String information = patron + ", " + returnedCondition + ", " + dateReturned;
 		audit.add(information);
 	}
 	
