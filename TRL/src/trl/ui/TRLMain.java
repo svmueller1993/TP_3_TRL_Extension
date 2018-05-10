@@ -1,11 +1,20 @@
-package trl;
+package trl.ui;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class TRLApp {
+import trl.controller.TPLController;
+import trl.domain.Copy;
+import trl.domain.Manager;
+import trl.domain.Patron;
+import trl.domain.PatronCopies;
+import trl.domain.Textbook;
+import trl.domain.TitleManager;
+import trl.domain.Worker;
+
+public class TRLMain {
 
 	private String title = "  _______        _   _                 _       _____            _        _    _      _ _                          \r\n"
 			+ " |__   __|      | | | |               | |     |  __ \\          | |      | |  | |    (_) |                         \r\n"
@@ -19,13 +28,7 @@ public class TRLApp {
 	private TPLController controller = new TPLController();
 	private Worker worker;
 
-	public static void main(String[] args) {
-		TRLApp app = new TRLApp();
-		app.displayAppTitle();
-		app.launch();
-	}
-
-	private void launch() {
+	public void launch() {
 		while (true) {
 			if (worker == null) {
 				int i = displayMenu(new String[] { "Login", "Exit", "Help" });

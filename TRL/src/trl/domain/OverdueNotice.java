@@ -1,4 +1,4 @@
-package trl;
+package trl.domain;
 
 import java.util.List;
 

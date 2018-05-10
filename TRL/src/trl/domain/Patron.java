@@ -1,4 +1,4 @@
-package trl;
+package trl.domain;
 
 /**
  * This class holds Patron information such as first name, last name, phone,

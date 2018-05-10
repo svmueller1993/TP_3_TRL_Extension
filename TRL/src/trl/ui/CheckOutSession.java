@@ -1,8 +1,14 @@
-package trl;
+package trl.ui;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import trl.controller.TPLController;
+import trl.domain.Copy;
+import trl.domain.Patron;
+import trl.domain.Textbook;
+
 import java.util.Date;
 /**
  * UI helper class implements check out textbook copy UI logic.

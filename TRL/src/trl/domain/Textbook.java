@@ -1,4 +1,4 @@
-package trl;
+package trl.domain;
 
 public class Textbook {
 

@@ -1,4 +1,4 @@
-package trl;
+package trl.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,6 +7,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
+import trl.domain.Copy;
+import trl.domain.Manager;
+import trl.domain.Patron;
+import trl.domain.PatronCopies;
+import trl.domain.Textbook;
+import trl.domain.TitleManager;
+import trl.domain.Worker;
 /**
  * This class contains business logic.
  *
@@ -207,10 +215,10 @@ public class TPLController {
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, 3);
 		int i = 0;
-		String prefix = patron.patronId + "_" + cal.getTimeInMillis() + "_";
+		String prefix = patron.getPatronId() + "_" + cal.getTimeInMillis() + "_";
 		for (Copy copy : checkOutCopies) {
 			copy.setRented(true);
-			patronCopies.add(new PatronCopies(prefix + i, patron.patronId, copy.getId(), cal.getTime(), checkOutDate, null));
+			patronCopies.add(new PatronCopies(prefix + i, patron.getPatronId(), copy.getId(), cal.getTime(), checkOutDate, null));
 		}
 	}
 	

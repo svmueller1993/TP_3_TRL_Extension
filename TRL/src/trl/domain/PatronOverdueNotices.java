@@ -1,4 +1,4 @@
-package trl;
+package trl.domain;
 /**
  * This class holds patron's overdue notice information 
  */
