@@ -2,8 +2,19 @@ package trl.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import trl.domain.Copy;
+import trl.domain.Patron;
+import trl.domain.PatronCopies;
+import trl.domain.Textbook;
+import trl.domain.Worker;
 
 class TPLControllerTest {
 
@@ -19,67 +30,105 @@ class TPLControllerTest {
 
 	@Test
 	void testLoadSampleData() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		assertNotNull(c);
 	}
 
 	@Test
 	void testLogin() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		assertTrue(c.login("worker", "worker") == c.workers.get(0));
+		
 	}
 
 	@Test
 	void testValidatePatron() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		assertTrue(c.validatePatron("1") == c.patrons.get(1));
 	}
 
 	@Test
 	void testCanPatronCheckoutCopies() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		
+		assertEquals(false, c.canPatronCheckoutCopies(c.patrons.get(2)));
+		assertEquals(true, c.canPatronCheckoutCopies(c.patrons.get(1)));
 	}
 
 	@Test
 	void testCanPatronCheckInCopies() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		
+		assertEquals(false, c.canPatronCheckInCopies(c.patrons.get(1), c.copies)); 
 	}
 
 	@Test
-	void testGetPatronCopies() {
-		fail("Not yet implemented");
+	void testGetPatronCopies() throws ParseException {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		ArrayList<PatronCopies> pcopies = new ArrayList<PatronCopies>();
+		pcopies.add(new PatronCopies("1", "1", "1", sdf.parse("09/10/2018"), sdf.parse("01/10/2018"), null));
+		assertEquals(pcopies.get(0).toString(), c.patronCopies.get(0).toString());
 	}
 
 	@Test
 	void testValidateCopy() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		assertNotNull(c.validateCopy("1"));
 	}
 
 	@Test
 	void testGetTextbook() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		assertNotNull(c.getTextbook("3"));
 	}
 
-	@Test
+	@Test//Part of UI
 	void testCheckoutCopies() {
-		fail("Not yet implemented");
+		
 	}
 
-	@Test
+	@Test//part of UI
 	void testCheckInCopies() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
-	void testAddTextbook() {
-		fail("Not yet implemented");
+	void testAddTextbook() throws Exception {
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		Textbook t = c.addTextbook("12345", "Test", "Testing");
+		assertEquals(t, c.getTextbook("12345"));
+		
 	}
 
 	@Test
-	void testAddCopies() {
-		fail("Not yet implemented");
+	void testAddCopies() throws Exception {
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		Textbook t = c.addTextbook("12345", "Test", "Testing");
+		c.addCopies(t.getId(), 1);
+		assertEquals("51", c.copies.get(c.copies.size()-1).getId());
+		
 	}
 
 	@Test
 	void testResolveOverdueHold() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setOverdueHold(true);
+		assertEquals(true, p.isOverdueHold());
+		TPLController c = new TPLController();
+		c.resolveOverdueHold(p);
+		assertEquals(false, p.isOverdueHold());
 	}
 
 }
