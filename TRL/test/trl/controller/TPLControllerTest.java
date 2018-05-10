@@ -13,7 +13,8 @@ class TPLControllerTest {
 
 	@Test
 	void testTPLController() {
-		fail("Not yet implemented");
+		TPLController c = new TPLController();
+		assertNotNull(c);
 	}
 
 	@Test
