@@ -274,11 +274,19 @@ public class TPLController {
 	}
 	
 	//Making Tests First
-	public ArrayList<Copy> findAllCopies(String TextbookId)
+	public ArrayList<Copy> findAllCopies(String textbookId)
 	{
 		ArrayList<Copy> copiesOfText = new ArrayList<Copy>();
-		return copiesOfText;
 		
+		for(int i = 0; i < copies.size(); i++)
+		{
+			if (copies.get(i).getTextbookId().equals(textbookId)) 
+					{
+					copiesOfText.add(copies.get(i));
+					}
+		}
+		
+		return copiesOfText;
 	}
 	
 	//Making Tests First

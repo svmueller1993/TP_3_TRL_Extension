@@ -138,7 +138,7 @@ class TPLControllerTest {
 		c.loadSampleData();
 		Textbook t = c.addTextbook("12345", "Test", "Testing");
 		c.addCopies(t.getId(), 2);
-		ArrayList<Copy> copiesOfText = c.findAllCopies("12345");
+		ArrayList<Copy> copiesOfText = c.findAllCopies(t.getId());
 		assertEquals(2, copiesOfText.size());
 		assertEquals(true, c.copies.containsAll(copiesOfText));
 		
@@ -152,10 +152,10 @@ class TPLControllerTest {
 		c.loadSampleData();
 		Textbook t = c.addTextbook("12345", "Test", "Testing");
 		c.addCopies(t.getId(), 2);
-		ArrayList<Copy> copiesOfText = c.findAllCopies("12345");
+		ArrayList<Copy> copiesOfText = c.findAllCopies(t.getId());
 		assertEquals(true, c.textbooks.contains(t));
 		assertEquals(true, c.copies.containsAll(copiesOfText));
-		c.removeTextbook("12345");
+		c.removeTextbook(t.getId());
 		assertEquals(false, c.textbooks.contains(t));
 		assertEquals(null, c.findAllCopies("12345"));
 
