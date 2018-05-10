@@ -157,8 +157,7 @@ class TPLControllerTest {
 		assertEquals(true, c.copies.containsAll(copiesOfText));
 		c.removeTextbook(t.getId());
 		assertEquals(false, c.textbooks.contains(t));
-		assertEquals(null, c.findAllCopies("12345"));
-
+		assertEquals("[]", c.findAllCopies(t.getId()).toString());
 	}
 	
 }
