@@ -296,5 +296,10 @@ public class TPLController {
 		copies.removeAll(remove);
 		textbooks.remove(this.getTextbook(textId));
 	}
+	
+	public void removeCopy(String copyId)
+	{
+		
+	}
 
 }

@@ -160,6 +160,19 @@ class TPLControllerTest {
 		assertEquals("[]", c.findAllCopies(t.getId()).toString());
 	}
 	
+	
+	@Test
+	void testremoveCopy() throws Exception {
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		Textbook t = c.addTextbook("12345", "Test", "Testing");
+		c.addCopies(t.getId(), 1);
+		ArrayList<Copy> copiesOfText = c.findAllCopies(t.getId());
+		Copy copy = copiesOfText.get(0);
+		assertEquals(true, c.copies.containsAll(copiesOfText));
+		c.removeCopy(copy.getId());
+		assertEquals(false, c.copies.contains(copy));
+	}
 }
 
 
