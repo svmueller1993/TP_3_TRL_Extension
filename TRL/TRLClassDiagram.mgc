@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="trl.domain.PatronCopies" x="146" y="510">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.domain.TitleManager" x="923" y="247">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="trl.domain.Manager"/>
+    </Class>
+    <Class name="trl.ui.CheckInSession" x="906" y="426">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="trl.domain.Patron"
+            endpointName="patron" kind="Simple"/>
+        <Association destinationClassName="trl.controller.TPLController"
+            endpointName="controller" kind="Simple"/>
+        <Association destinationClassName="trl.domain.Copy"
+            endpointName="copies" kind="Simple"/>
+        <Communication destinationClassName="trl.controller.TPLController"/>
+        <Communication destinationClassName="trl.domain.Copy"/>
+    </Class>
+    <Class name="trl.ui.TRLMain" x="16" y="15">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="trl.controller.TPLController"
+            endpointName="controller" kind="Simple"/>
+        <Association destinationClassName="trl.domain.Worker"
+            endpointName="worker" kind="Simple"/>
+        <Communication destinationClassName="trl.controller.TPLController"/>
+        <Communication destinationClassName="trl.ui.CheckInSession"/>
+        <Communication destinationClassName="trl.ui.CheckOutSession"/>
+    </Class>
+    <Class name="trl.domain.PatronOverdueNotices" x="862" y="121">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.domain.Copy" x="500" y="140">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.domain.OverdueNotice" x="863" y="34">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.domain.PatronHolds" x="762" y="135">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.domain.Manager" x="881" y="312">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="trl.domain.Worker"/>
+    </Class>
+    <Class name="trl.controller.TPLController" x="-46" y="238">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="trl.domain.Copy"
+            endpointName="copies" kind="Simple"/>
+        <Association destinationClassName="trl.domain.PatronCopies"
+            endpointName="patronCopies" kind="Simple"/>
+        <Association destinationClassName="trl.domain.Patron"
+            endpointName="patrons" kind="Simple"/>
+        <Association destinationClassName="trl.domain.Textbook"
+            endpointName="textbooks" kind="Simple"/>
+        <Association destinationClassName="trl.domain.Worker"
+            endpointName="workers" kind="Simple"/>
+        <Communication destinationClassName="trl.domain.PatronCopies"/>
+        <Communication destinationClassName="trl.domain.Patron"/>
+        <Communication destinationClassName="trl.domain.Copy"/>
+    </Class>
+    <Class name="trl.domain.Worker" x="581" y="338">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.domain.Hold" x="756" y="36">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.domain.Textbook" x="427" y="19">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.ui.CheckOutSession" x="845" y="563">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="trl.domain.Patron"
+            endpointName="patron" kind="Simple"/>
+        <Association destinationClassName="trl.controller.TPLController"
+            endpointName="controller" kind="Simple"/>
+        <Association destinationClassName="trl.domain.Copy"
+            endpointName="copies" kind="Simple"/>
+        <Communication destinationClassName="trl.controller.TPLController"/>
+        <Communication destinationClassName="trl.domain.Copy"/>
+    </Class>
+    <Class name="trl.domain.Patron" x="341" y="476">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="trl.TRLApplication" x="190" y="16">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="trl.ui.TRLMain"/>
+    </Class>
+</ClassDiagram>

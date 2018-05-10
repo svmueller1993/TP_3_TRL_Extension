@@ -44,7 +44,7 @@ public class TRLMain {
 					break;
 				}
 			} else if (worker instanceof TitleManager) {
-				int i = displayMenu(new String[] { "Add Textbook", "Add Copies", "Show Textbook Details", "Logout", "Help" });
+				int i = displayMenu(new String[] { "Add Textbook", "Add Copies", "Show Textbook Details", "Remove Textbook and Copies", "Remove Copy", "Logout", "Help" });
 				switch (i) {
 				case 1:
 					addTextbook();
@@ -56,9 +56,15 @@ public class TRLMain {
 					showTextbookDetails();
 					break;
 				case 4:
+					removeText();
+					break;
+				case 5: 
+					removeCopy();
+					break;
+				case 6:
 					logout();
 					break;
-				case 5:
+				case 7:
 					displayHelp();
 					break;
 				}
@@ -280,6 +286,19 @@ public class TRLMain {
 		controller.resolveOverdueHold(patron);
 		System.out.println("The system has been updated, the hold has been removed.");
 		
+	}
+	
+	public void removeText()
+	{
+		System.out.println("Please enter Textbook ID");
+		String textbookId = scanner.next();
+		controller.removeTextbook(textbookId);
+	}
+	
+	public void removeCopy()
+	{
+		//System.out.println("Please enter Textbook ID");
+		//String textbookId = scanner.next();
 		
 	}
 

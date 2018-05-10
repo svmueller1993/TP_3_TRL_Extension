@@ -272,5 +272,20 @@ public class TPLController {
 	{
 		patron.setOverdueHold(false);
 	}
+	
+	//Making Tests First
+	public ArrayList<Copy> findAllCopies(String TextbookId)
+	{
+		ArrayList<Copy> copiesOfText = new ArrayList<Copy>();
+		return copiesOfText;
+		
+	}
+	
+	//Making Tests First
+	public void removeTextbook(String textbookId)
+	{
+		
+	}
+	
 
 }

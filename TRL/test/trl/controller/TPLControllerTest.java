@@ -130,5 +130,37 @@ class TPLControllerTest {
 		c.resolveOverdueHold(p);
 		assertEquals(false, p.isOverdueHold());
 	}
+	
+	@Test //Making Tests before making the code
+	void testfindAllCopies() throws Exception
+	{
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		Textbook t = c.addTextbook("12345", "Test", "Testing");
+		c.addCopies(t.getId(), 2);
+		ArrayList<Copy> copiesOfText = c.findAllCopies("12345");
+		assertEquals(2, copiesOfText.size());
+		assertEquals(true, c.copies.containsAll(copiesOfText));
+		
+	}
+	
+	
+	
+	@Test//Making Tests before making the code
+	void testRemoveTextbook() throws Exception {
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		Textbook t = c.addTextbook("12345", "Test", "Testing");
+		c.addCopies(t.getId(), 2);
+		ArrayList<Copy> copiesOfText = c.findAllCopies("12345");
+		assertEquals(true, c.textbooks.contains(t));
+		assertEquals(true, c.copies.containsAll(copiesOfText));
+		c.removeTextbook("12345");
+		assertEquals(false, c.textbooks.contains(t));
+		assertEquals(null, c.findAllCopies("12345"));
 
+	}
+	
 }
+
+
