@@ -13,37 +13,48 @@ class PatronHoldsTest {
 
 	@Test
 	void testPatronHolds() {
-		fail("Not yet implemented");
+		PatronHolds p = new PatronHolds("1", "2", "3");
+		assertNotNull(p);
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		PatronHolds p = new PatronHolds("1", "2", "3");
+		assertTrue(p.getId() == "1");
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		PatronHolds p = new PatronHolds("1", "2", "3");
+		p.setId("10");
+		assertTrue(p.getId() == "10");
 	}
 
 	@Test
 	void testGetPatronId() {
-		fail("Not yet implemented");
+		PatronHolds p = new PatronHolds("1", "2", "3");
+		assertTrue(p.getPatronId() == "2");
 	}
 
 	@Test
 	void testSetPatronId() {
-		fail("Not yet implemented");
+		PatronHolds p = new PatronHolds("1", "2", "3");
+		p.setPatronId("20");
+		assertTrue(p.getPatronId() == "20");
 	}
 
 	@Test
 	void testGetHoldId() {
-		fail("Not yet implemented");
+		PatronHolds p = new PatronHolds("1", "2", "3");
+		assertTrue(p.getHoldId() == "3");
 	}
 
 	@Test
 	void testSetHoldId() {
-		fail("Not yet implemented");
+		PatronHolds p = new PatronHolds("1", "2", "3");
+		p.setHoldId("30");
+		assertTrue(p.getHoldId() == "30");
+		
 	}
 
 }

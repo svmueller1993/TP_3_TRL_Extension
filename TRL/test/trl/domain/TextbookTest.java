@@ -13,52 +13,66 @@ class TextbookTest {
 
 	@Test
 	void testTextbook() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		assertNotNull(t);
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		assertTrue(t.getId() == "1");
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		t.setId("10");
+		assertTrue(t.getId() == "10");
 	}
 
 	@Test
 	void testGetIsbn() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		assertTrue(t.getIsbn() == "123");
 	}
 
 	@Test
 	void testSetIsbn() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		t.setIsbn("1234");
+		assertTrue(t.getIsbn() == "1234");
 	}
 
 	@Test
 	void testGetTitle() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		assertTrue(t.getTitle() == "Test");
 	}
 
 	@Test
 	void testSetTitle() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		t.setTitle("This is a Test");
+		assertTrue(t.getTitle() == "This is a Test");
 	}
 
 	@Test
 	void testGetAuthor() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		assertTrue(t.getAuthor() == "Testing");
 	}
 
 	@Test
 	void testSetAuthor() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		t.setAuthor("Testing This");
+		assertTrue(t.getAuthor() == "Testing This");
 	}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		Textbook t = new Textbook("1", "123", "Test", "Testing");
+		assertEquals(t.toString(), "Textbook [id=" + t.getId() + ", isbn=" + t.getIsbn() + ", title=" + t.getTitle() + ", author=" + t.getAuthor() + "]");
 	}
 
 }

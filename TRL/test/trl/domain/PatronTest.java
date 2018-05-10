@@ -13,92 +13,130 @@ class PatronTest {
 
 	@Test
 	void testPatron() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		assertNotNull(p);
 	}
 
 	@Test
 	void testGetPatronId() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		assertTrue(p.getPatronId() == "1");
 	}
 
 	@Test
 	void testSetPatronId() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setPatronId("123");
+		assertTrue(p.getPatronId() == "123");
 	}
 
 	@Test
 	void testGetFirstName() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		assertTrue(p.getFirstName() == "Test");
 	}
 
 	@Test
 	void testSetFirstName() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setFirstName("Patron");
+		assertTrue(p.getFirstName() == "Patron");
 	}
 
 	@Test
 	void testGetLastName() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		assertTrue(p.getLastName() == "Testing");
 	}
 
 	@Test
 	void testSetLastName() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setLastName("Patron");
+		assertTrue(p.getLastName() == "Patron");
 	}
 
 	@Test
 	void testGetPhone() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setPhone("000-000-0000");
+		assertTrue(p.getPhone() == "000-000-0000");
 	}
 
 	@Test
 	void testSetPhone() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setPhone("000-000-0000");
+		assertTrue(p.getPhone() == "000-000-0000");
 	}
 
 	@Test
 	void testIsActive() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		assertTrue(p.isActive() == true);
 	}
 
 	@Test
 	void testSetActive() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setActive(false);
+		assertTrue(p.isActive() == false);
 	}
 
 	@Test
 	void testGetAccountType() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setAccountType("Patron");
+		assertTrue(p.getAccountType() == "Patron");
 	}
 
 	@Test
 	void testSetAccountType() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setAccountType("Patron");
+		assertTrue(p.getAccountType() == "Patron");
 	}
 
 	@Test
 	void testGetAddress() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setAddress("123 Test Street, Minneapolis MN, 55454");
+		assertTrue(p.getAddress() == "123 Test Street, Minneapolis MN, 55454");
 	}
 
 	@Test
 	void testSetAddress() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setAddress("123 Test Street, Minneapolis MN, 55454");
+		assertTrue(p.getAddress() == "123 Test Street, Minneapolis MN, 55454");
 	}
 
 	@Test
 	void testIsOverdueHold() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setOverdueHold(false);
+		assertTrue(p.isOverdueHold() == false);
 	}
 
 	@Test
 	void testSetOverdueHold() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setOverdueHold(false);
+		assertTrue(p.isOverdueHold() == false);
 	}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		Patron p = new Patron("1", "Test", "Testing", true);
+		p.setPhone("000-000-0000");
+		p.setAccountType("Patron");
+		p.setAddress("123 Test Street, Minneapolis MN, 55454");
+		p.setOverdueHold(false);
+		
+		assertEquals("Patron [patronId= " + p.patronId + ", firstName= " + p.firstName + ", lastName= " + p.lastName + ", phone= "
+				+ p.phone + ", active= " + p.active + ", accountType= " + p.accountType + ", address= " + p.address
+				+ ", overdueHold= " + p.overdueHold + "]", p.toString());
+		
 	}
 
 }

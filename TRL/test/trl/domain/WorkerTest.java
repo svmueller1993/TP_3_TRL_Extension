@@ -13,47 +13,61 @@ class WorkerTest {
 
 	@Test
 	void testWorker() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		assertNotNull(w);
 	}
 
 	@Test
 	void testGetWorkerId() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		assertTrue(w.getWorkerId() == "1");
 	}
 
 	@Test
 	void testSetWorkerId() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		w.setWorkerId("10");
+		assertTrue(w.getWorkerId() == "10");
 	}
 
 	@Test
 	void testGetFirstName() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		assertTrue(w.getFirstName() == "Test");
 	}
 
 	@Test
 	void testSetFirstName() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		w.setFirstName("Tester");
+		assertTrue(w.getFirstName() == "Tester");
 	}
 
 	@Test
 	void testGetLastName() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		assertTrue(w.getLastName() == "Testing");
+		
 	}
 
 	@Test
 	void testSetLastName() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		w.setLastName("Testing1");
+		assertTrue(w.getLastName() == "Testing1");
 	}
 
 	@Test
 	void testGetPassword() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		assertTrue(w.getPassword() == "Password");
 	}
 
 	@Test
 	void testSetPassword() {
-		fail("Not yet implemented");
+		Worker w = new Worker("1", "Test", "Testing", "Password");
+		w.setPassword("Password123!");
+		assertTrue(w.getPassword() == "Password123!");
 	}
 
 }

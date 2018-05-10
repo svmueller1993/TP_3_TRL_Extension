@@ -13,57 +13,75 @@ class HoldTest {
 
 	@Test
 	void testHold() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		assertNotNull(h);
 	}
 
 	@Test
 	void testGetId() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		assertTrue(h.getId() == "123");
 	}
 
 	@Test
 	void testSetId() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		h.setId("12");
+		assertTrue(h.getId() == "12");
 	}
 
 	@Test
 	void testGetType() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		assertTrue(h.getType() == "Overdue");
 	}
 
 	@Test
 	void testSetType() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		h.setType("Damaged");
+		assertTrue(h.getType() == "Damaged");
+		
 	}
 
 	@Test
 	void testGetDecription() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		assertTrue(h.getDecription() == "Late Books");
 	}
 
 	@Test
 	void testSetDecription() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		h.setDecription("Damaged");
+		assertTrue(h.getDecription() == "Damaged");
 	}
 
 	@Test
 	void testGetFine() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		assertTrue(h.getFine() == 45.00);
 	}
 
 	@Test
 	void testSetFine() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		h.setFine(55.00);
+		assertTrue(h.getFine() == 55.00);
 	}
 
 	@Test
 	void testIsResolved() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		h.setResolved(false);
+		assertTrue(h.isResolved() == false);
 	}
 
 	@Test
 	void testSetResolved() {
-		fail("Not yet implemented");
+		Hold h = new Hold("123", "Overdue", "Late Books", 45.00);
+		h.setResolved(true);
+		assertTrue(h.isResolved() == true);
 	}
 
 }

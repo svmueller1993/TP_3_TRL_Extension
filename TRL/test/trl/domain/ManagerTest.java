@@ -13,7 +13,9 @@ class ManagerTest {
 
 	@Test
 	void testManager() {
-		fail("Not yet implemented");
+		Manager t = new Manager("123", "Test", "Testing", "Password");
+		assertNotNull(t);
+				
 	}
 
 }

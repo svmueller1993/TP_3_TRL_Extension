@@ -13,7 +13,8 @@ class TitleManagerTest {
 
 	@Test
 	void testTitleManager() {
-		fail("Not yet implemented");
+		TitleManager t = new TitleManager("1", "Test", "Testing", "Password");
+		assertNotNull(t);
 	}
 
 }
