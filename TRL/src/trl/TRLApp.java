@@ -59,7 +59,7 @@ public class TRLApp {
 					displayHelp();
 					break;
 				}
-			} else if (worker instanceof Manager) {
+			} else if (worker instanceof Manager || worker instanceof Worker) {
 				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details",
 						"Logout", "Help" });
 				switch (i) {
@@ -180,6 +180,7 @@ public class TRLApp {
 		} else {
 			System.out.println("Invalid login name or password.");
 		}
+		launch();
 	}
 
 	private void displayHelp() {
