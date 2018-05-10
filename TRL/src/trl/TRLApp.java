@@ -59,9 +59,10 @@ public class TRLApp {
 					displayHelp();
 					break;
 				}
-			} else if (worker instanceof Manager || worker instanceof Worker) {
+				//Worker needs to be able to check in and out texts too
+			} else if (worker instanceof Manager || worker != null) {
 				int i = displayMenu(new String[] { "Check Out a Textbook", "Check In a Textbook", "Show Patron Details",
-						"Logout", "Help" });
+						"Resolve Hold", "Logout", "Help" });
 				switch (i) {
 				case 1:
 					startCheckOutSession();
@@ -73,9 +74,12 @@ public class TRLApp {
 					showPatronDetails();
 					break;
 				case 4:
-					logout();
+					resolveHold();
 					break;
 				case 5:
+					logout();
+					break;
+				case 6:
 					displayHelp();
 					break;
 				}
@@ -84,10 +88,10 @@ public class TRLApp {
 	}
 
 	private void showTextbookDetails() {
-		System.out.println("Enter Textbook ID:");
+		System.out.println("Enter Textbook ID or ISBN:");
 		String textbookId = scanner.nextLine();
 		if (textbookId == null || textbookId.isEmpty()) {
-			System.out.println("Textbook ID can not be empty.");
+			System.out.println("Textbook ID or ISBN can not be empty.");
 			return;
 		}
 		
@@ -180,7 +184,6 @@ public class TRLApp {
 		} else {
 			System.out.println("Invalid login name or password.");
 		}
-		launch();
 	}
 
 	private void displayHelp() {
@@ -224,16 +227,26 @@ public class TRLApp {
 		return selection;
 	}
 
-	public void startCheckInSession() {
+	public void startCheckInSession() 
+	{
 		Patron patron = validatePatron();
 		CheckInSession checkIn = new CheckInSession(patron, controller);
-		if (patron != null) {
+		checkIn.start();
+		if (patron != null) 
+		{
 			System.out.println(patron);
-			checkIn.start();
-			checkIn.checkInCopies();
+			
+			if(controller.canPatronCheckInCopies(patron, checkIn.copies)) 
+			{
+				checkIn.checkInCopies();
+			}
+
 		}
 	}
+	
 
+	
+	
 	public void startCheckOutSession() {
 		Patron patron = validatePatron();
 		if (patron != null) {
@@ -256,6 +269,15 @@ public class TRLApp {
 			System.out.println("Invalid Patron Id.");
 		}
 		return p;
+	}
+	
+	public void resolveHold()
+	{
+		Patron patron = validatePatron();
+		controller.resolveOverdueHold(patron);
+		System.out.println("The system has been updated, the hold has been removed.");
+		
+		
 	}
 
 }

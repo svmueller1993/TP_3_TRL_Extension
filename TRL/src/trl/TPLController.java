@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 /**
  * This class contains business logic.
  *
@@ -19,6 +20,7 @@ public class TPLController {
 	List<Copy> copies = new ArrayList<Copy>();
 	List<PatronCopies> patronCopies = new ArrayList<PatronCopies>();
 
+	Scanner sc = new Scanner(System.in);
 	public TPLController() {
 		loadSampleData();
 	}
@@ -56,10 +58,10 @@ public class TPLController {
 		}
 		// Patron copies
 		try {
-			patronCopies.add(new PatronCopies("1", "1", "1", sdf.parse("02/10/2018"), sdf.parse("01/10/2018"), null));
+			patronCopies.add(new PatronCopies("1", "1", "1", sdf.parse("09/10/2018"), sdf.parse("01/10/2018"), null));
 			validateCopy("1").setRented(true);
 			patronCopies.add(new PatronCopies("2", "2", "2", sdf.parse("02/10/2018"), sdf.parse("01/10/2018"), null));
-			validateCopy("1").setRented(true);
+			validateCopy("2").setRented(true);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -112,6 +114,42 @@ public class TPLController {
 	}
 
 	/**
+	 * 
+	 * @param patron
+	 * @param copies
+	 * @return boolean if this textbook as able to be checked in
+	 */
+	public boolean canPatronCheckInCopies(Patron patron, List<Copy> copies)
+	{
+		boolean flag = false;
+		if (patronCopies.isEmpty())
+		{
+			System.out.println("Records show this patron does not have any copies checked out");
+				
+		}
+		
+		if(!patronCopies.isEmpty())
+		{
+			for (Copy c: copies)
+			{
+				if (patronCopies.contains(c) == false)
+				{
+					System.out.println("Our records show that this patron did not rent the copy " + getTextbook(c.getTextbookId()).getTitle());
+					break;
+				}
+				
+				else
+				{
+					flag = true;
+				}
+			}
+		}
+		
+		return flag;
+	}
+
+	
+	/**
 	 * Returns patrons all copies.
 	 * @param patronId Patron Id
 	 * @return return List of PatronCopies
@@ -148,6 +186,11 @@ public class TPLController {
 	public Textbook getTextbook(String textbookId) {
 		for (Textbook t : textbooks) {
 			if (t.getId().equals(textbookId)) {
+				return t;
+			}
+			
+			else if(t.getIsbn().equals(textbookId))
+			{
 				return t;
 			}
 		}
@@ -188,7 +231,9 @@ public class TPLController {
 		for (Copy copy : checkInCopies) {
 			copy.setRented(false);
 			patronCopies.remove(copy);
-			//Need to add to copy audit trail
+			System.out.println("What is the condition of the copy being returned?"); //insert condition to add to audit
+			String returnedCondition = sc.next();
+			copy.setAudit(patron.getPatronId(), returnedCondition, checkInDate.toString());
 		}
 	}
 
@@ -213,6 +258,11 @@ public class TPLController {
 			id++;
 		}
 		return ids;
+	}
+	
+	public void resolveOverdueHold(Patron patron)
+	{
+		patron.setOverdueHold(false);
 	}
 
 }

@@ -1,5 +1,7 @@
 package trl;
 
+import java.util.ArrayList;
+
 public class Copy {
 
 	private String id;
@@ -7,6 +9,8 @@ public class Copy {
 	private double price;
 	private boolean rented;
 	private String textbookId;
+	private ArrayList<String> audit = new ArrayList<String>();
+	
 
 	public Copy(String id, String condition, double price, boolean rented, String textbookId) {
 		super();
@@ -56,6 +60,22 @@ public class Copy {
 
 	public void setTextbookId(String textbookId) {
 		this.textbookId = textbookId;
+	}
+	
+	public void setAudit(String patron, String returnedCondition, String dateReturned )
+	{
+		String information = patron + " " + returnedCondition + " " + dateReturned;
+		audit.add(information);
+	}
+	
+	public ArrayList<String> getAudit() //checkout history of copy
+	{
+		for(int i = 0; i < audit.size(); i++)
+		{
+			System.out.println(audit.get(i));
+		}
+		
+		return audit; 
 	}
 
 	@Override
