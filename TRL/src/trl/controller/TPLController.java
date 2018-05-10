@@ -299,7 +299,8 @@ public class TPLController {
 	
 	public void removeCopy(String copyId)
 	{
-		
+		Copy c = this.validateCopy(copyId);
+		copies.remove(c);
 	}
 
 }
