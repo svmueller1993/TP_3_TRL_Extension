@@ -13,17 +13,7 @@ class CheckOutSessionTest {
 
 	@Test
 	void testCheckOutSession() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testStart() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testCheckOutCopies() {
-		fail("Not yet implemented");
+		assertNotNull(new CheckOutSession(null, null));
 	}
 
 }

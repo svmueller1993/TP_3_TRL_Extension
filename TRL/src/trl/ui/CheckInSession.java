@@ -82,6 +82,11 @@ public class CheckInSession {
 			System.out.println("Do you want check in the above copies?(y/n)");
 			if("Y".equalsIgnoreCase(scanner.nextLine())){
 				controller.checkInCopies(patron, copies);
+				for (Copy copy : copies) {
+					System.out.println("What is the condition of the copy being returned?"); //insert condition to add to audit
+					String returnedCondition = scanner.next();
+					copy.setAudit(patron.getPatronId(), returnedCondition, new Date().toString());
+				}
 				System.out.println("\nCheck in completed.");
 			}
 		} else {

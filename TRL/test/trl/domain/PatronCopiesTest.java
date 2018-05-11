@@ -72,7 +72,7 @@ class PatronCopiesTest {
 	void testGetDueDate() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		PatronCopies p = new PatronCopies("1", "2", "123", sdf.parse("05/07/2019"), sdf.parse("05/07/2018"), null);
-		assertEquals("Tue May 07 00:00:00 CDT 2019", p.getDueDate().toString());
+		assertEquals("05/07/2019", sdf.format(p.getDueDate()));
 		
 	}
 
@@ -81,14 +81,14 @@ class PatronCopiesTest {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		PatronCopies p = new PatronCopies("1", "2", "123", sdf.parse("05/07/2019"), sdf.parse("05/07/2018"), null);
 		p.setDueDate(sdf.parse("08/01/2018"));
-		assertEquals("Wed Aug 01 00:00:00 CDT 2018", p.getDueDate().toString());
+		assertEquals("08/01/2018", sdf.format(p.getDueDate()));
 	}
 
 	@Test
 	void testGetCheckOutDate() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		PatronCopies p = new PatronCopies("1", "2", "123", sdf.parse("05/07/2019"), sdf.parse("05/07/2018"), null);
-		assertEquals("Mon May 07 00:00:00 CDT 2018", p.getCheckOutDate().toString());
+		assertEquals("05/07/2018", sdf.format(p.getCheckOutDate()));
 	}
 
 	@Test
@@ -96,7 +96,7 @@ class PatronCopiesTest {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		PatronCopies p = new PatronCopies("1", "2", "123", sdf.parse("05/07/2019"), sdf.parse("05/07/2018"), null);
 		p.setCheckOutDate(sdf.parse("05/08/2018"));
-		assertEquals("Tue May 08 00:00:00 CDT 2018", p.getCheckOutDate().toString());
+		assertEquals("05/08/2018", sdf.format(p.getCheckOutDate()));
 	}
 
 	@Test
@@ -111,7 +111,7 @@ class PatronCopiesTest {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		PatronCopies p = new PatronCopies("1", "2", "123", sdf.parse("05/07/2019"), sdf.parse("05/07/2018"), null);
 		p.setCheckInDate(sdf.parse("06/01/2018"));
-		assertEquals("Fri Jun 01 00:00:00 CDT 2018", p.getCheckInDate().toString());
+		assertEquals("06/01/2018", sdf.format(p.getCheckInDate()));
 	}
 
 	@Test

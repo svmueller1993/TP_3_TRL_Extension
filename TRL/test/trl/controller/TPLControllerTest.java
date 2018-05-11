@@ -92,13 +92,40 @@ class TPLControllerTest {
 		assertNotNull(c.getTextbook("3"));
 	}
 
-	@Test//Part of UI
+	@Test
 	void testCheckoutCopies() {
-		
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		List<Copy> checkOutCopies = new ArrayList();
+		checkOutCopies.add(new Copy("test", "NEW", 2.0f, false, "1"));
+		Patron patron = c.validatePatron("4");
+		c.checkoutCopies(patron , checkOutCopies);
+		List<PatronCopies> l = c.getPatronCopies("4");
+		assertEquals(1, l.size());
+		PatronCopies pc = l.get(0);
+		assertEquals("test", pc.getCopyId());
 	}
 
-	@Test//part of UI
+	@Test
 	void testCheckInCopies() {
+		TPLController c = new TPLController();
+		c.loadSampleData();
+		List<Copy> checkOutCopies = new ArrayList();
+		Copy copy = new Copy("test", "NEW", 2.0f, false, "1");
+		checkOutCopies.add(copy);
+		Patron patron = c.validatePatron("4");
+		c.checkoutCopies(patron , checkOutCopies);
+		List<PatronCopies> l = c.getPatronCopies("4");
+		assertEquals(1, l.size());
+		PatronCopies pc = l.get(0);
+		assertEquals("test", pc.getCopyId());
+		
+		List<Copy> checkInCopies = new ArrayList();
+		checkInCopies.add(copy);
+		c.checkInCopies(patron, checkInCopies);
+		l = c.getPatronCopies("4");
+		assertEquals(1, l.size());
+		assertEquals(false, copy.isRented());
 		
 	}
 

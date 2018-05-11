@@ -12,38 +12,9 @@ class TRLMainTest {
 	}
 
 	@Test
-	void testLaunch() {
-		fail("Not yet implemented");
+	void testConstructor() {
+		assertNotNull(new TRLMain());
 	}
 
-	@Test
-	void testDisplayAppTitle() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testDisplayMenu() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testStartCheckInSession() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testStartCheckOutSession() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testValidatePatron() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testResolveHold() {
-		fail("Not yet implemented");
-	}
 
 }

@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import trl.controller.TPLController;
+import trl.domain.Patron;
+
 class CheckInSessionTest {
 
 	@BeforeEach
@@ -13,17 +16,9 @@ class CheckInSessionTest {
 
 	@Test
 	void testCheckInSession() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testStart() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testCheckInCopies() {
-		fail("Not yet implemented");
+		Patron patron = null;
+		TPLController controller = new TPLController();
+		assertNotNull(new CheckInSession(patron, controller));
 	}
 
 }
