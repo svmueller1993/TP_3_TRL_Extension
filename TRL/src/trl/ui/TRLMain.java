@@ -236,6 +236,7 @@ public class TRLMain {
 		return selection;
 	}
 
+	
 	public void startCheckInSession() 
 	{
 		Patron patron = validatePatron();
@@ -288,17 +289,42 @@ public class TRLMain {
 		
 	}
 	
-	public void removeText()
+	public void removeText() 
 	{
 		System.out.println("Please enter Textbook ID");
 		String textbookId = scanner.next();
+		System.out.println("Are you sure you want to remove this textbook and its copy? y/n");
+		String ans = scanner.next();
+		if(ans == "y" && controller.getTextbook(textbookId) != null)
+		{
 		controller.removeTextbook(textbookId);
+		System.out.println("This textbook and all its copies have been removed from inventory");
+		}
+		
+		else
+		{
+			System.out.println("A textbook with this ID does not exist");
+		}
+		
 	}
 	
-	public void removeCopy()
+	public void removeCopy() 
 	{
-		//System.out.println("Please enter Textbook ID");
-		//String textbookId = scanner.next();
+		System.out.println("Please enter Copy ID");
+		String copyId = scanner.next();
+		System.out.println("Are you sure you want to remove this copy? y/n");
+		String ans = scanner.next();
+		
+		if (ans == "y" && controller.validateCopy(copyId) != null)
+		{
+				System.out.println("The copy has been removed from inventory");
+		
+		}
+		
+		else
+		{
+			System.out.println("A copy with this ID does not exist");
+		}
 		
 	}
 
