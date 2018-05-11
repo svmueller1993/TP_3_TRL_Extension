@@ -20,10 +20,10 @@ There is a help option in the main menu of our application, it explains to the u
 
 Code Coverage:
 
-Using ECEmma, our code coverage is about 99.6% of our non-UI code. This was done by ensureing every outcome of every method was tested and passed. 
+Using ECEmma, our code coverage is about 99.6% of our non-UI code. This was done by ensuring every outcome of every method was tested and passed. 
 
 Reverse-Engineered Class Diagram:
 
 Original Class Diagram Sha: f339505d1ceb2752beef469ef8ae8c8f88c19050
 
-Final Class Diagram Sah: 33786b36c9fc2fd8cdc7373ee3c8d0627f596048
+Final Class Diagram Sha: 33786b36c9fc2fd8cdc7373ee3c8d0627f596048
