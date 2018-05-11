@@ -129,31 +129,14 @@ public class TPLController {
 	 */
 	public boolean canPatronCheckInCopies(Patron patron, List<Copy> copies)
 	{
-		boolean flag = false;
-		if (patronCopies.isEmpty())
+		List<PatronCopies> l = getPatronCopies(patron.getPatronId());
+		if (l.isEmpty())
 		{
 			System.out.println("Records show this patron does not have any copies checked out");
-				
+			return false;
 		}
 		
-		if(!patronCopies.isEmpty())
-		{
-			for (Copy c: copies)
-			{
-				if (patronCopies.contains(c) == false)
-				{
-					System.out.println("Our records show that this patron did not rent the copy " + getTextbook(c.getTextbookId()).getTitle());
-					break;
-				}
-				
-				else
-				{
-					flag = true;
-				}
-			}
-		}
-		
-		return flag;
+		return true;
 	}
 
 	

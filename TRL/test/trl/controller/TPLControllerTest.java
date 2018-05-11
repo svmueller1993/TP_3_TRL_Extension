@@ -64,7 +64,7 @@ class TPLControllerTest {
 		TPLController c = new TPLController();
 		c.loadSampleData();
 		
-		assertEquals(false, c.canPatronCheckInCopies(c.patrons.get(1), c.copies)); 
+		assertEquals(true, c.canPatronCheckInCopies(c.patrons.get(1), c.copies)); 
 	}
 
 	@Test

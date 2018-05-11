@@ -254,9 +254,6 @@ public class TRLMain {
 		}
 	}
 	
-
-	
-	
 	public void startCheckOutSession() {
 		Patron patron = validatePatron();
 		if (patron != null) {
@@ -317,8 +314,7 @@ public class TRLMain {
 		
 		if (ans == "y" && controller.validateCopy(copyId) != null)
 		{
-				System.out.println("The copy has been removed from inventory");
-		
+			System.out.println("The copy has been removed from inventory");
 		}
 		
 		else
