@@ -280,10 +280,14 @@ public class TRLMain {
 	
 	public void resolveHold()
 	{
-		Patron patron = validatePatron();
-		controller.resolveOverdueHold(patron);
+		System.out.println("Enter Patron Id:");
+		String patronId = scanner.nextLine();
+		Patron p = controller.validatePatron(patronId);
+		if (p == null) {
+			System.out.println("Invalid Patron Id.");
+		}
+		p.setOverdueHold(false);
 		System.out.println("The system has been updated, the hold has been removed.");
-		
 	}
 	
 	public void removeText() 

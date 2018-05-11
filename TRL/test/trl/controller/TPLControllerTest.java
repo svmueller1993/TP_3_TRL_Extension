@@ -148,16 +148,6 @@ class TPLControllerTest {
 		
 	}
 
-	@Test
-	void testResolveOverdueHold() {
-		Patron p = new Patron("1", "Test", "Testing", true);
-		p.setOverdueHold(true);
-		assertEquals(true, p.isOverdueHold());
-		TPLController c = new TPLController();
-		c.resolveOverdueHold(p);
-		assertEquals(false, p.isOverdueHold());
-	}
-	
 	@Test //Making Tests before making the code
 	void testfindAllCopies() throws Exception
 	{
