@@ -274,7 +274,7 @@ public class TPLController {
 		textbooks.remove(this.getTextbook(textId));
 	}
 	
-	public void removeCopy(String copyId) //TDD
+	public void removeCopy(String copyId) //Making Tests first
 	{
 		Copy c = this.validateCopy(copyId);
 		copies.remove(c);

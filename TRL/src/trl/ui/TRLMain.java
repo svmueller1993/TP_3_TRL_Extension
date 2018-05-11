@@ -278,7 +278,7 @@ public class TRLMain {
 		return p;
 	}
 	
-	public void resolveHold()
+	public void resolveHold()//deleted method from controller and just added it here - code smell
 	{
 		System.out.println("Enter Patron Id:");
 		String patronId = scanner.nextLine();
