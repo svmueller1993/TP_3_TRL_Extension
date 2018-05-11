@@ -1,5 +1,6 @@
 package trl.controller;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.ParseException;
@@ -40,6 +41,7 @@ class TPLControllerTest {
 		TPLController c = new TPLController();
 		c.loadSampleData();
 		assertTrue(c.login("worker", "worker") == c.workers.get(0));
+		assertTrue(c.login("test","test") == null);
 		
 	}
 
@@ -48,13 +50,13 @@ class TPLControllerTest {
 		TPLController c = new TPLController();
 		c.loadSampleData();
 		assertTrue(c.validatePatron("1") == c.patrons.get(1));
+		assertTrue(c.validatePatron("test") == null);
 	}
 
 	@Test
 	void testCanPatronCheckoutCopies() {
 		TPLController c = new TPLController();
 		c.loadSampleData();
-		
 		assertEquals(false, c.canPatronCheckoutCopies(c.patrons.get(2)));
 		assertEquals(true, c.canPatronCheckoutCopies(c.patrons.get(1)));
 	}
@@ -63,13 +65,13 @@ class TPLControllerTest {
 	void testCanPatronCheckInCopies() {
 		TPLController c = new TPLController();
 		c.loadSampleData();
-		
+		Patron p = new Patron("20", "Test", "Testing", true);
 		assertEquals(true, c.canPatronCheckInCopies(c.patrons.get(1), c.copies)); 
+		assertEquals(false, c.canPatronCheckInCopies(p, c.copies));
 	}
 
 	@Test
 	void testGetPatronCopies() throws ParseException {
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		TPLController c = new TPLController();
 		c.loadSampleData();
@@ -83,6 +85,7 @@ class TPLControllerTest {
 		TPLController c = new TPLController();
 		c.loadSampleData();
 		assertNotNull(c.validateCopy("1"));
+		assertTrue(c.validateCopy("80") == null);
 	}
 
 	@Test
@@ -90,6 +93,7 @@ class TPLControllerTest {
 		TPLController c = new TPLController();
 		c.loadSampleData();
 		assertNotNull(c.getTextbook("3"));
+		assertTrue(c.getTextbook("Test") == null);
 	}
 
 	@Test
@@ -135,6 +139,12 @@ class TPLControllerTest {
 		c.loadSampleData();
 		Textbook t = c.addTextbook("12345", "Test", "Testing");
 		assertEquals(t, c.getTextbook("12345"));
+		try {
+		c.addTextbook("12345", "Test", "Testing");
+		} catch(Exception e)
+		{
+			assert(e).getMessage() == ("This textbook already exist.");
+		}
 		
 	}
 
