@@ -198,6 +198,8 @@ public class TRLMain {
 	private void displayHelp() {
 		System.out.println("\nHELP");
 		System.out.println("For demo use login \"worker\" and password \"worker\".");
+		System.out.println("Or use login \"manager\" and password \"manager\" for manager.");
+		System.out.println("Or use login \"tmanager\" and password \"tmanager\" for title manager.");
 		System.out.println("Press Enter to continue...");
 		scanner.nextLine();
 	}
