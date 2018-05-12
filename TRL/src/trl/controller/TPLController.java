@@ -269,9 +269,11 @@ public class TPLController {
 	//Making Tests First
 	public void removeTextbook(String textId) 
 	{
+		Textbook t = this.getTextbook(textId);
+		textbooks.remove(t);
 		ArrayList <Copy> remove = this.findAllCopies(textId);
 		copies.removeAll(remove);
-		textbooks.remove(this.getTextbook(textId));
+		
 	}
 	
 	public void removeCopy(String copyId) //Making Tests first

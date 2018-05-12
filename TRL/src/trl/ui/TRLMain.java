@@ -297,8 +297,8 @@ public class TRLMain {
 		System.out.println("Please enter Textbook ID");
 		String textbookId = scanner.next();
 		System.out.println("Are you sure you want to remove this textbook and its copy? y/n");
-		String ans = scanner.next();
-		if(ans == "y" && controller.getTextbook(textbookId) != null)
+		String ans = scanner.nextLine();
+		if("Y".equalsIgnoreCase(scanner.nextLine()) && controller.getTextbook(textbookId) != null)
 		{
 		controller.removeTextbook(textbookId);
 		System.out.println("This textbook and all its copies have been removed from inventory");
@@ -316,9 +316,8 @@ public class TRLMain {
 		System.out.println("Please enter Copy ID");
 		String copyId = scanner.next();
 		System.out.println("Are you sure you want to remove this copy? y/n");
-		String ans = scanner.next();
-		
-		if (ans == "y" && controller.validateCopy(copyId) != null)
+		String ans = scanner.nextLine();
+		if ("Y".equalsIgnoreCase(scanner.nextLine())  && controller.validateCopy(copyId) != null)
 		{
 			System.out.println("The copy has been removed from inventory");
 		}
